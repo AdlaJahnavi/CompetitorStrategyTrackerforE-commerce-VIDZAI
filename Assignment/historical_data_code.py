@@ -2,8 +2,6 @@ import json
 from datetime import datetime, timedelta
 import pandas as pd
 import random
-
-# Mock JSON responses for 5 products from different websites
 json_responses = [
     # Product 1: Amazon
     '''
@@ -32,7 +30,7 @@ json_responses = [
     }
     ''',
     # Product 2: Ajio
-    '''
+    
     {
         "pid": "469228483_darkgrey",
         "price": 4999.0,
@@ -94,10 +92,8 @@ review_data = []
 for json_response in json_responses:
     data = json.loads(json_response)
 
-    # Generate a random date within the past 30 days
     random_date = (datetime.now() - timedelta(days=random.randint(1, 30))).strftime("%d-%m-%Y")
 
-    # Calculate discount percentage
     discount = round(((data.get("highest_price", data["price"]) - data["price"]) / data.get("highest_price", data["price"])) * 100, 2)
 
     price_data.append({
@@ -115,7 +111,6 @@ for json_response in json_responses:
             "Source": data["url"]
         })
 
-# Convert to DataFrame and Save to CSV
 df_prices = pd.DataFrame(price_data)
 df_reviews = pd.DataFrame(review_data)
 
