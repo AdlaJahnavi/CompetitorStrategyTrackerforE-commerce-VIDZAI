@@ -1,7 +1,7 @@
-import streamlit as st  # type: ignore
+import streamlit as st  
 import pandas as pd
-import plotly.express as px  # type: ignore
-from textblob import TextBlob  # type: ignore
+import plotly.express as px  
+from textblob import TextBlob  
 import json
 import requests
 from datetime import datetime
