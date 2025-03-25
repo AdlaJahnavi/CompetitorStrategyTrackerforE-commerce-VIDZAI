@@ -6,6 +6,18 @@ import json
 import requests
 from datetime import datetime
 from fpdf import FPDF
+import subprocess
+import sys
+
+# Function to install missing dependencies
+def install_dependencies():
+    try:
+        import plotly.express as px
+    except ModuleNotFoundError:
+        subprocess.run([sys.executable, "-m", "pip", "install", "plotly"])
+        import plotly.express as px  # Re-import after installation
+
+install_dependencies()
 
 # ✅ Set Streamlit page config
 st.set_page_config(page_title="Competitor Strategy Tracker", layout="wide")
